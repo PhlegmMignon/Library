@@ -1,0 +1,153 @@
+:root {
+    --white: #ffffff;
+    --grey: #e9ecef;
+    --grey2: #dee2e6;
+    --grey3: #ced4da;
+    --darkGrey: #adb5bd;
+    --black: #212529;
+    
+    --lightGreen: #cbf3f0;
+    --green: #2ec4b6;
+    --lightOrange: #ffbf69;
+    --orange: #ff9f1c;
+}
+
+* {
+    margin: 0px 0px;
+    padding: 0px 0px;
+    list-style-type: none;
+    font-family: Roboto, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 116px 355px 1fr 50px;
+    justify-items: center;
+    background-color: var(--white);
+    min-height: calc(100vh - 50px);
+    width: 100vw;
+    padding-top: 50px;
+    gap: 10px;
+}
+
+.header {
+    grid-column: 2 / 3;
+    font-size: 3rem;
+    padding: 8px 8px;
+    color: var(--black);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.main {
+    box-sizing: border-box;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: .5fr 2.5fr 1fr 1fr .5fr;
+    align-items: center;
+    background-color: var(--lightGreen);
+    width: 100%;
+    height: 355px;
+    gap: 20px;
+    border-radius: 16px;
+    padding: 60px 0px;
+}
+
+    .container {
+        display: grid;
+        grid-column: 2 / 5;
+        grid-template-columns: 60% 1fr 1fr;
+        width: calc(39vw + 5px);
+    }
+
+
+    .titleForm {
+        grid-column: 2 / 4;
+    }
+    .authorForm {
+        grid-column: 1 / 2;
+    }
+    .pagesForm {
+        grid-column: 2 / 3;
+        justify-self: flex-end;
+
+    }
+    
+
+    label {
+        display: block;
+        font-size: 1.05rem;
+        font-size: 1.17rem;
+        margin-bottom: 3px;
+    }
+
+        
+
+    input {
+        border-style: none;
+        border-radius: 4px;
+        height: 35px;
+        width: clamp(1px, 39vw, 39vw);
+        padding-left: 5px;
+        outline: none;
+        font-size: 1rem;
+    }
+
+        #author {
+            width: clamp(100px, 330px, 330px);
+        }
+        #pages {
+            width: 100px;
+        }
+
+    #readbtn {
+        justify-self: flex-end;
+        width: 100px;
+        height: 50px;
+        margin-top: auto;
+        background-color: var(--lightOrange);
+        border-style: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+    }
+    
+    #addBook {
+        grid-column: 2 / 4;
+        display: block;
+        width: 200px;
+        height: 55px;
+        background-color: var(--orange) ;
+        border-style: none;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+
+
+.list {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+footer {
+    grid-column: 2 / 3;
+    display: flex;
+    width: 315px;
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: 8px;
+    justify-content: space-between;
+    justify-self: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+    img {
+        width: 25px;
+        height: auto;
+        vertical-align: middle;
+    }
