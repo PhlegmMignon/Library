@@ -138,7 +138,6 @@ body {
     width: 100%;
     height: auto;
     margin-top: 20px;
-    /* background-color: red; */
 }
 
     #info {
@@ -149,7 +148,6 @@ body {
         padding: 5px;
         align-items: flex-end;
         justify-content: space-between;
-        /* background-color: var(--darkGrey); */
         font-size: 1.1rem;
         letter-spacing: .5px;
         border-bottom: 2px solid var(--grey3);
@@ -163,10 +161,16 @@ body {
         #authorInfo {
             width: 20%;
         }
-            #pageInfo, #status, #remove {
+            #pageInfo, #remove {
             width: 50px;
-        }
-
+            }
+            #status {
+                width: 100px;
+                text-align: center;
+            }
+            #remove {
+                margin-right: 4px;
+            }
 
     .card {
         display: flex;
@@ -175,7 +179,6 @@ body {
         width: 100%;
         height: 80px;
         padding: 4px 4px;
-        /* background-color: var(--lightGreen); */
         color: var(--black);
         font-size: 1.1rem;
         align-items: center;
@@ -190,31 +193,29 @@ body {
         .authorEle {
             width: 20%;
         }
-        .pageEle, .status, .remove {
-            width: 60px;
+        .pagesEle{
+            width: 50px;
+        }
+        .statusBox {
+            width: 100px;
+        }
+        .deleteBtn {
+            height: 30px;
+            width: 40px;
         }
         
         .statusBtn {
-            /* justify-self: flex-end; */
             width: 80px;
             height: 50px;
-            /* margin-top: 10px; */
             background-color: var(--lightOrange);
             border-style: none;
             border-radius: 10px;
             font-size: 1.1rem;
         }
 
-        .deleteBtn {
-            height: 40px;
-            width: 40px;
-        }
-
         .hide {
             display: none;
         }
-
-
 
 footer {
     grid-column: 2 / 3;

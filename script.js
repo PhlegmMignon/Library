@@ -11,12 +11,8 @@ function Book(title, author, pages, read, i) {
     }
 }
 
-
-function addBook(title, author, pages, status) {
-    
-
-    let counter = 0; 
-    myLibrary.push(new Book(title, author, pages, status, counter));
+function addBook(title, author, pages, status, i) {
+    myLibrary.push(new Book(title, author, pages, status, i));
     
     //Creates initial card
     let newElement = document.createElement('div');
@@ -31,7 +27,7 @@ function addBook(title, author, pages, status) {
     
     //Creates author in card 
     let authorEle = document.createElement('div');
-    authorEle.classList.add('titleEle');
+    authorEle.classList.add('authorEle');
     let authorText = document.createTextNode(author);
     authorEle.appendChild(authorText)
     newElement.appendChild(authorEle);
@@ -44,33 +40,38 @@ function addBook(title, author, pages, status) {
     newElement.appendChild(pagesEle);
     
     //Creates status button
+    let statusBox = document.createElement('div');
+    statusBox.classList.add('statusBox');
     let statusBtn = document.createElement('button');
     statusBtn.classList.add('statusBtn');
+    statusBtn.id = 'status' + i;
     let statusText = document.createTextNode('Unread');
     statusBtn.appendChild(statusText);
-    newElement.appendChild(statusBtn);
+    statusBox.appendChild(statusBtn);
+    newElement.appendChild(statusBox);
+
+        //Status event listener
+        statusBtn.addEventListener('click', () => changeStatus(statusBtn.id));
 
     //Creates delete button
-    let deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('deleteBtn');
-    let deleteSvg = document.getElementById('svg');
-    deleteBtn.appendChild(deleteSvg);
-    newElement.appendChild(deleteBtn);
+    let deleteEle = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+    let deleteBtn = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+    deleteEle.classList.add('deleteBtn');
+    deleteBtn.setAttribute("d", "M13.46,12L19,17.54V19H17.54L12,13.46L6.46,19H5V17.54L10.54,12L5,6.46V5H6.46L12,10.54L17.54,5H19V6.46L13.46,12Z");
+    deleteBtn.style.strokeWidth = '24px';
+    deleteEle.appendChild(deleteBtn);
+    newElement.appendChild(deleteEle);
 
-
-
+    //Listener for deleting card
+    newElement.id = i;
+    deleteEle.addEventListener('click', () => {newElement.remove()});
 
     //Finally adds the card
     let cardContainer = document.querySelector('#list');
     cardContainer.appendChild(newElement);
-    counter++;
 }
 
-
 document.getElementById('readbtn').addEventListener('click', ()=> changeRead());
-
-
-
 
 function changeRead() {
     let readbtn = document.getElementById('readbtn');
@@ -78,17 +79,26 @@ function changeRead() {
         readbtn.textContent = 'Unread';
         readbtn.style.backgroundColor = '#ffbf69';
         read = 'unread';
-
-        // let thing = document.querySelectorAll('#readbtn');
-        // console.log(thing);
     }
     else {
         readbtn.textContent = 'Read';
         readbtn.style.backgroundColor = '#2ec4b6';
         read = 'read';
     }
-    // console.log(read);
 }
+function changeStatus(id) {
+    let changeBtn = document.getElementById(id);
+
+    if (changeBtn.textContent == 'Read') {
+        changeBtn.textContent = 'Unread';
+        changeBtn.style.backgroundColor = '#ffbf69';
+    }
+    else {
+        changeBtn.textContent = 'Read';
+        changeBtn.style.backgroundColor = '#2ec4b6';
+    }
+}
+
 
 const title = document.getElementById('title');
 const author = document.getElementById('author');
@@ -97,10 +107,11 @@ let read = 'unread';
 
 const form = document.getElementById('actualTitleForm');
 
+let counter = 0; 
 form.addEventListener('submit', (e) => {
-    // console.log(title.value, author.value, pages.value, read);
     e.preventDefault();
-    addBook(title.value, author.value, pages.value, read);
+    addBook(title.value, author.value, pages.value, read, counter);
+    counter++;
 })
 
 
